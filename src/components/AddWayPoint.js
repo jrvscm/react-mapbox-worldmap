@@ -2,12 +2,14 @@ import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
 import {required, nonEmpty} from '../validators';
+import {addWayPoint} from '../actions/index';
 import '../reset.css';
 import './AddWayPoint.css';
 
 export class AddWayPointForm extends React.Component {
     onSubmit(values) {
-        console.log(values);
+    	let waypoint = [Number(values.addWaypointLong), Number(values.addWaypointLat)];
+        this.props.dispatch(addWayPoint(waypoint));
     }
 
     render() {
@@ -29,9 +31,16 @@ export class AddWayPointForm extends React.Component {
                 <label htmlFor="add-waypoint">Add A Waypoint</label>
                 <Field
                     component={Input}
-                    type="text"
-                    name="add-waypoint"
-                    id="add-waypoint"
+                    type="number"
+                    name="addWaypointLat"
+                    id="addWaypointLat"
+                    validate={[required, nonEmpty]}
+                />
+                <Field
+                    component={Input}
+                    type="number"
+                    name="addWaypointLong"
+                    id="addWaypointLong"
                     validate={[required, nonEmpty]}
                 />
                 <button disabled={this.props.pristine || this.props.submitting}>

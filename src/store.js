@@ -8,7 +8,7 @@ const middleware = applyMiddleware(thunk);
 const store = createStore(
     combineReducers({
     	form: formReducer,
-    	worldMap: WorldMapReducer
+    	worldMapReducer: WorldMapReducer
     }),
     compose(middleware, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 );
