@@ -7,14 +7,18 @@ import './MarkerLayer.css';
 
 class MarkerLayer extends Component {
 	componentDidMount() {
-	setInterval(() => {
+	let upRight = setInterval(() => {
 		let newPointsArr=[];
 		let newPoints = this.props.points.map((point, index) =>
 			newPointsArr.push([point[0] + .0000010, point[1] + .0000010])
 		)
 			this.props.dispatch(updateLocation(newPointsArr))
 		}, 100)
-	}
+
+	setTimeout(() => {
+		clearInterval(upRight);
+		}, 10000)
+}
 
 	onMouseEnter(e) {
 		console.log('entered')
