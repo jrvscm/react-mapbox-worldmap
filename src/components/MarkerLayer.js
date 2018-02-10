@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Feature, Layer } from 'react-mapbox-gl';
+import { Feature, Layer} from 'react-mapbox-gl';
 import { updateLocation } from '../actions/index';
 import '../reset.css';
 import './MarkerLayer.css';
