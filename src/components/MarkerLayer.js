@@ -7,18 +7,42 @@ import './MarkerLayer.css';
 
 class MarkerLayer extends Component {
 	componentDidMount() {
-	let upRight = setInterval(() => {
+		//just some demo math to move the marker along a road.
+	let upOne = setInterval(() => {
 		let newPointsArr=[];
 		let newPoints = this.props.points.map((point, index) =>
-			newPointsArr.push([point[0] + .0000010, point[1] + .0000010])
+			newPointsArr.push([point[0], point[1] + .0000020])
 		)
 			this.props.dispatch(updateLocation(newPointsArr))
-		}, 100)
+		}, 50)
 
 	setTimeout(() => {
-		clearInterval(upRight);
-		}, 10000)
+		clearInterval(upOne);
+	let right = setInterval(() => {
+		let newPointsArr=[];
+		let newPoints = this.props.points.map((point, index) =>
+			newPointsArr.push([point[0] + .000005, point[1]])
+		)
+			this.props.dispatch(updateLocation(newPointsArr))
+		}, 50)
+			setTimeout(() => {
+				clearInterval(right);
+				let up = setInterval(() => {
+				let newPointsArr=[];
+				let newPoints = this.props.points.map((point, index) =>
+				newPointsArr.push([point[0], point[1] + .000005])
+			)
+				this.props.dispatch(updateLocation(newPointsArr))
+			}, 50)
+				setTimeout(() => {
+					clearInterval(up)
+				}, 10000)
+		}, 10700)
+	}, 16800)
+
+
 }
+
 
 	onMouseEnter(e) {
 		console.log('entered')
