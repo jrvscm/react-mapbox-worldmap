@@ -19,6 +19,12 @@ const WorldMapReducer = (state = initialState, action) => {
 			waypoints: [...state.waypoints, action.waypoint]
 		}
 
+		case 'UPDATE_LOCATION':
+		return {
+			...state,
+			waypoints: action.locations
+		}
+
 		default: 
 			return state
 

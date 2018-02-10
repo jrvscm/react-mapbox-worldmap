@@ -1,0 +1,22 @@
+form.add-waypoint-form {
+	margin-top: 100px;
+	color: white;
+}
+
+form.add-waypoint-form input {
+	padding: 5px;
+	margin:5px;
+}
+
+form.add-waypoint-form button {
+	padding: 5px;
+	border:2px solid white;
+	background: transparent;
+	color:white;
+	cursor:pointer;
+	transition: all .2s ease-in-out;
+}
+
+form.add-waypoint-form button:hover {
+	background: rgba(0,0,0,.5);
+}
