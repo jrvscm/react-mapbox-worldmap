@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Feature, Layer} from 'react-mapbox-gl';
+import { Feature, Layer, Popup} from 'react-mapbox-gl';
 import { updateLocation } from '../actions/index';
 import '../reset.css';
 import './MarkerLayer.css';
 
 class MarkerLayer extends Component {
-	componentDidMount() {
+	/*componentDidMount() {
 		//just some demo math to move the marker along a road.
 	let upOne = setInterval(() => {
 		let newPointsArr=[];
@@ -41,25 +41,21 @@ class MarkerLayer extends Component {
 	}, 16800)
 
 
-}
-
-
-	onMouseEnter(e) {
-		console.log('entered')
-	}
-	
-	onMouseLeave(e) {
-		console.log('left')
-	}
-	
+}*/
 	render() {
 	
 	const features = this.props.points.map((coords, index) =>
-		<Feature key={index} index={index}
+
+		<Feature key={index}
       		coordinates={coords}
-      		onMouseEnter={(e) => this.onMouseEnter(e)}
-      		onMouseLeave={(e) => this.onMouseLeave(e)}
-      		draggable={'true'} />
+      		draggable={'true'}
+      		properties={<Popup
+  coordinates={[-0.13235092163085938,51.518250335096376]}
+  offset={{
+    'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]
+  }}>
+  <h1>Popup</h1>
+</Popup>} />
 	)
 
 	return (
@@ -70,7 +66,7 @@ class MarkerLayer extends Component {
       			layout={{
       			"icon-image": "rocket-15",
       			"icon-size": 2}}>
-      			{features}
+      			{ features }
     		</Layer>
 		</div>
 		);
